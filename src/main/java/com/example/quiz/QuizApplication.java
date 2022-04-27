@@ -1,5 +1,7 @@
 package com.example.quiz;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,9 +27,12 @@ public class QuizApplication {
 	QuizRepository repository;
 	private void execute() {
 		// 登録処理
-		setup();
+		// setup();
 		// 全件取得
-		showList();
+		// showList();
+		
+		// 1件取得
+		showOne();
 	}
 	
 	/**
@@ -62,5 +67,21 @@ public class QuizApplication {
 		}
 		System.out.println("-----全件取得処理の完了-----");
 	}
-
+	
+	/**
+	 * 1件取得
+	 */
+	private void showOne() {
+		System.out.println("=====1件取得開始=====");
+		
+		// 1件取得処理の実施（戻り値はOptional）
+		Optional<Quiz> quizOpt = repository.findById(33);
+		if (quizOpt.isPresent()) {
+			System.out.println(quizOpt.get());
+		} else {
+			System.out.println("該当する問題が存在しません。");
+		}
+		System.out.println("=====1件取得終了=====");
+	}
+	 
 }
