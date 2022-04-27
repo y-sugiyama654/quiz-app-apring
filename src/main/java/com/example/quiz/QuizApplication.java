@@ -32,9 +32,11 @@ public class QuizApplication {
 		// showList();
 		// 1件取得
 		// showOne();
-		
 		// 更新処理
-		updateQuiz();
+		//updateQuiz();
+		
+		// 削除処理
+		deleteQuiz();
 	}
 	
 	/**
@@ -99,6 +101,18 @@ public class QuizApplication {
 		System.out.println("更新したデータは、" + quiz1 + "です。");
 		
 		System.out.println("=====更新処理終了=====");
+	}
+	
+	/**
+	 * 削除処理
+	 */
+	private void deleteQuiz() {
+		System.out.println("=====削除処理開始=====");
+		
+		// 削除実行
+		repository.deleteById(34);
+		
+		System.out.println("=====削除処理終了=====");
 	}
 	 
 }
