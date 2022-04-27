@@ -30,9 +30,11 @@ public class QuizApplication {
 		// setup();
 		// 全件取得
 		// showList();
-		
 		// 1件取得
-		showOne();
+		// showOne();
+		
+		// 更新処理
+		updateQuiz();
 	}
 	
 	/**
@@ -82,6 +84,21 @@ public class QuizApplication {
 			System.out.println("該当する問題が存在しません。");
 		}
 		System.out.println("=====1件取得終了=====");
+	}
+	
+	/**
+	 * 更新処理
+	 */
+	private void updateQuiz() {
+		System.out.println("=====更新処理開始=====");
+		
+		// エンティティの生成
+		Quiz quiz1 = new Quiz(33, "「Spring」はフレームワークか？", true, "変更太郎");
+		// 登録処理
+		quiz1 = repository.save(quiz1);
+		System.out.println("更新したデータは、" + quiz1 + "です。");
+		
+		System.out.println("=====更新処理終了=====");
 	}
 	 
 }
