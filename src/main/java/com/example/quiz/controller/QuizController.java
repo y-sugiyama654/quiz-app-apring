@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.quiz.entity.Quiz;
@@ -168,5 +169,21 @@ public class QuizController {
 		
 		return form;
 	}
+	
+	/**
+	 * idをkeyにしてデータを削除
+	 */
+	@PostMapping("/delete")
+	public String delete(
+			@RequestParam("id") String id,
+			Model model,
+			RedirectAttributes redirectAttributes) {
+		
+		service.deleteQuizById(Integer.parseInt(id));
+		redirectAttributes.addFlashAttribute("delcomplete", "削除が完了しました。");
+		
+		return "redirect:/quiz";
+	}
+	
 
 }
